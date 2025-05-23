@@ -16,8 +16,10 @@ const Infaltables = () => {
         }
         const data = await response.json();
         setProducts(data);
+
       } catch (error) {
         setError(error.message);
+
       } finally {
         setLoading(false);
       }
@@ -25,7 +27,7 @@ const Infaltables = () => {
 
     fetchProducts();
 
-  }, []); // Empty dependency array! it means this runs once when the component mounts(se monta)
+  }, []);
 
   // Render the products
   if (loading) {
