@@ -48,7 +48,8 @@ const Infaltables = () => {
             
             <div className="card h-100">
               <img src={product.image} alt={product.title} className="card-img-top mx-auto"
-                style={{ height: '150px', width: 'auto', objectFit: 'contain', padding: '10px' }} />
+                style={{ height: '150px', width: 'auto', objectFit: 'contain', padding: '10px' }}
+              />
               
               <div className="card-body p-2">
                 <h6 className="card-title" style={{ fontSize: '0.9rem' }}>{product.title}</h6>
