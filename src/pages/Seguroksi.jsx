@@ -41,8 +41,8 @@ const Infaltables = () => {
   return (
     <div className="container">
       <h2 className="my-4">Listado de Productos</h2>
+      
       <div className="row">
-
         {products.map(product => (
           <div key={product.id} className="col-6 col-sm-6 col-md-3 mb-4">
             

@@ -12,7 +12,7 @@ const Navegacion = () => {
         <Navbar.Brand as={Link} to="/" style={{ display: 'flex', alignItems: 'center' }}>
           <img 
             src={newIcon} 
-            alt="Icono de Lenceria" 
+            alt="Icono del Comercio" 
             style={{ width: '48px', height: '48px', marginLeft: '8px' }} 
           />
         </Navbar.Brand>
