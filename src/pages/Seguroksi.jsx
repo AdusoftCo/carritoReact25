@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useCart } from '../components/CartContext';
 
 const Infaltables = () => {
+  const { addToCart } = useCart();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -55,6 +57,10 @@ const Infaltables = () => {
                 <h6 className="card-title" style={{ fontSize: '0.9rem' }}>{product.title}</h6>
                 <p className="card-text text-primary mb-0" style={{ fontWeight: 'bold' }}>${product.price}</p>
               </div>
+              <button 
+                  className="btn btn-primary mt-2 mb-2" 
+                  onClick={() => addToCart(product)}
+                >Agrega al carrito :D</button>
 
             </div>
           </div>

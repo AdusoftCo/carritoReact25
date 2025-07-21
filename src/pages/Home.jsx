@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useCart } from '../components/CartContext';
 
 const Home = () => {
+  const { addToCart } = useCart();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     // Fetch data
+    let url = 'https://685d4c80769de2bf08602010.mockapi.io/api/v11/products';
     const fetchProducts = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
+        const response = await fetch(url);
         
         if (!response.ok) {
           throw new Error('Error al obtener los productos !!');
@@ -53,8 +56,12 @@ const Home = () => {
               <div className="card-body p-2">
                 <h6 className="card-title" style={{ fontSize: '0.9rem' }}>{product.title}</h6>
                 <p className="card-text text-primary mb-0" style={{ fontWeight: 'bold' }}>${product.price}</p>
+                
               </div>
-
+              <button 
+                  className="btn btn-primary mt-2 mb-2" 
+                  onClick={() => addToCart(product)}
+                >Agrega al carrito :D</button>
             </div>
           </div>
         ))}

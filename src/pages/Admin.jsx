@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Admin.css';
 
@@ -7,7 +7,7 @@ const Admin = () => {
     const [role, setRole] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const navigate = useNavigate();
+// const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
