@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useCart } from '../components/CartContext';
+// import { useCart } from '../components/CartContext';
 
 const Infaltables = () => {
-  const { addToCart } = useCart();
+  // const { addToCart } = useCart();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

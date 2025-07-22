@@ -26,7 +26,7 @@ function App() {
               <Route path="/seguroksi" element={<Infaltables/>} />
               <Route path="/contacto" element={<Contacto/>} />
               <Route path="/admin" element={<Admin/>} />
-              <Route path="/carrito" element={<Carrito/>} />
+              <Route path="/carrito" element={<Carrito />} />
             </Routes>
           </div>
           <Footer />

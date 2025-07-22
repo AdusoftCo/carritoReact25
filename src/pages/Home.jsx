@@ -1,16 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useCart } from '../components/CartContext';
+import { Row, Col } from 'react-bootstrap';
+import ProductCard from '../components/ProductCard';
+import { CartContext } from '../components/CartContext';
+
+//import { useCart } from '../components/CartContext';
 
 const Home = () => {
-  const { addToCart } = useCart();
+  //const { addToCart } = useCart();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { agregarAlCarrito } = useContext(CartContext);
 
   useEffect(() => {
     // Fetch data
     let url = 'https://685d4c80769de2bf08602010.mockapi.io/api/v11/products';
+    
     const fetchProducts = async () => {
       try {
         const response = await fetch(url);
@@ -44,7 +50,20 @@ const Home = () => {
   return (
     <div className="container">
       <h2 className="my-4">Listado de Productos</h2>
-      <div className="row">
+      <Row>
+          {products.map((product) => (
+            <Col md={4} key={product.id} className="mb-4">
+              <ProductCard product={product} agregarAlCarrito={agregarAlCarrito} />
+            </Col>
+          ))}
+      </Row>
+    </div>
+
+  );
+};
+
+/*
+<div className="row">
 
         {products.map(product => (
           <div key={product.id} className="col-6 col-sm-6 col-md-3 mb-4">
@@ -67,9 +86,6 @@ const Home = () => {
         ))}
 
       </div>
-    </div>
-
-  );
-};
+ */
 
 export default Home;
