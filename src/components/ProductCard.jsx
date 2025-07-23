@@ -1,3 +1,5 @@
+// ProductCard.jsx
+
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
 
@@ -24,9 +26,11 @@ const ProductCard = ({ product, agregarAlCarrito }) => {
         </Card.Text>
         
       </Card.Body>
+
       <Button className="mb-2" variant="primary" onClick={() => agregarAlCarrito(product)}>
           Agregar al carrito
-        </Button>
+      </Button>
+
     </Card>
   );
 };

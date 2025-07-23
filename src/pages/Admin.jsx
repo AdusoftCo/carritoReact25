@@ -1,28 +1,30 @@
 import React, { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Admin.css';
+import { useAuth } from '../components/AuthContext';
 
 const Admin = () => {
+    const { login } = useAuth();
     const [role, setRole] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-// const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         
         if (role === '' || password === '') {
             setErrorMessage('Por favor, rellene todos los campos.');
-        
-        } else if (role === 'admin' && password === 'cac25017') {
-            console.log('Logging in with:', { role, password });
-            setErrorMessage('');
-            alert('Login Exitoso !');
-            //navigate('/listarProducts'); //Go to the CRUD component
-
         } else {
-            setErrorMessage('Usuario o Password incorrecto.');
+            const loginSuccess = login({ role, password });
+            if (loginSuccess) {
+                console.log('Logging in with:', { role, password });
+                setErrorMessage('');
+                navigate('/dashboard');
+            } else {
+                setErrorMessage('Usuario o Password incorrecto.');
+            }
         }
     };
 
@@ -80,7 +82,6 @@ const Admin = () => {
             </div>
         </div>
     );
-
 };
 
 export default Admin;

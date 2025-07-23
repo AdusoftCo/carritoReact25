@@ -1,10 +1,14 @@
-import React from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import carritoIcon from '../assets/icons8-carrito-de-compras-48.png';
 import newIcon from '../assets/favicon-32x32.png';
+import { CartContext } from '../components/CartContext';
 
 const Navegacion = () => {
+  const { carrito } = useContext(CartContext);
+
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
@@ -18,20 +22,24 @@ const Navegacion = () => {
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav" />
-        
-        <Nav className="me-auto">
-          <Nav.Link as={Link} to="/">Home</Nav.Link>
-          <Nav.Link as={Link} to="/ofertas">Ofertas</Nav.Link>
-          <Nav.Link as={Link} to="/seguroksi">InFaltables</Nav.Link>
-          <Nav.Link as={Link} to="/contacto">Contacto</Nav.Link>
-          <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/ofertas">Ofertas</Nav.Link>
+            <Nav.Link as={Link} to="/seguroksi">InFaltables</Nav.Link>
+            <Nav.Link as={Link} to="/contacto">Contacto</Nav.Link>
+            <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
 
-          <Nav.Link as={Link} to="/carrito" style={{ display: 'flex', alignItems: 'center' }}>
-            <img src={carritoIcon} alt="Carrito" style={{ width: '32px', height: '32px', marginRight: '8px' }} />
-          </Nav.Link>
-        </Nav>
-
+            <Nav.Link as={Link} to="/carrito" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src={carritoIcon} alt="Carrito" style={{ width: '32px', height: '32px', marginRight: '8px' }} />
+              {totalItems > 0 && (
+                <Badge pill bg="light" text="dark">
+                  {totalItems}
+                </Badge>
+              )}
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

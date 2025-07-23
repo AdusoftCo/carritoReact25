@@ -1,4 +1,5 @@
 // CartContext.jsx
+
 import React, { createContext, useState } from 'react';
 
 export const CartContext = createContext();
@@ -9,7 +10,7 @@ export const CartProvider = ({ children }) => {
 
   // Agregar producto al carrito
   const agregarAlCarrito = (product) => {
-
+    console.log('Adding to cart:', product);
     setCarrito((prevCarrito) => {
       const existe = prevCarrito.find(item => item.id === product.id);
       if (existe) {
@@ -21,6 +22,7 @@ export const CartProvider = ({ children }) => {
       // Si no existe, agregarlo con cantidad 1
       return [...prevCarrito, { ...product, cantidad: 1 }];
     });
+    console.log('Current cart:', carrito);
   };
 
   // Eliminar producto por ID
