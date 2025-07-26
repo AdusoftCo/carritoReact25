@@ -29,7 +29,6 @@ const ConditionalNavbar = () => {
   );
 };
 
-
 function App() {
   return (
     <AuthProvider>

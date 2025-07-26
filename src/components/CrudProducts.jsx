@@ -58,11 +58,10 @@ const CrudProductos = () => {
             throw new Error(`Error: ${response.statusText}`);
         }
      
-        // Optionally, you can parse the response if needed
         const data = await response.json();
-        console.log('Product updated:', data); // Log the updated product
+        console.log('Product updated:', data);
         handleClose();
-        getProductos(); // Refresh the product list
+        getProductos();
     
         } catch (error) {
             console.error('Failed to save product:', error);

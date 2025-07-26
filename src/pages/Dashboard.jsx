@@ -8,8 +8,7 @@ const Dashboard = () => {
     const userName = "Admin ";
 
     const handleLogout = () => {
-        // Add your logout logic here (e.g., clearing tokens, etc.)
-        window.location.href = '/'; // Redirect to the home page or login page
+        window.location.href = '/';
     };
 
     return (

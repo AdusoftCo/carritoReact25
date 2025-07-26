@@ -17,10 +17,9 @@ const DashboardNavbar = ({ userName, onLogout }) => {
             backgroundColor: 'white',
             boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}>
-            {/* This div acts as a spacer that takes up all available space, pushing subsequent items to the right */}
+            
             <div style={{ flexGrow: 1 }}></div>
 
-            {/* This is your actual content, now positioned to the right with controlled spacing */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <span style={{ color: '#333333' }}>{userName}</span>
                 <button
