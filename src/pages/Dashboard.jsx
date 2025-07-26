@@ -2,6 +2,7 @@
 
 import React from 'react';
 import DashboardNavbar from '../components/DashboradNavbar';
+import CrudProductos from '../components/CrudProducts';
 
 const Dashboard = () => {
     const userName = "Admin ";
@@ -14,8 +15,8 @@ const Dashboard = () => {
     return (
         <div>
             <DashboardNavbar userName={userName} onLogout={handleLogout} />
-            <div>
-                {/* dashboard content */}
+            <div className="container mt-4">
+                <CrudProductos />
             </div>
         </div>
     );

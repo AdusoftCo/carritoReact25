@@ -46,8 +46,39 @@ body, html {
     width: 100%;
 }
 .btn {
-    width: 100%;
+    width: auto;
 }
+
+.btn.btn-link.no-hover-bg-blue {
+    color: #007bff; 
+    text-decoration: none;
+}
+
+.btn.btn-link.no-hover-bg-blue:hover,
+.btn.btn-link.no-hover-bg-blue:focus,
+.btn.btn-link.no-hover-bg-blue:active {
+    background-color: transparent !important;
+    color: #007bff !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    box-shadow: none !important;
+}
+
+.btn.btn-link.no-hover-bg-red {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+.btn.btn-link.no-hover-bg-red:hover,
+.btn.btn-link.no-hover-bg-red:focus,
+.btn.btn-link.no-hover-bg-red:active {
+    background-color: transparent !important;
+    color: #dc3545 !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    box-shadow: none !important;
+}
+
 .third-screen-article {
     height: 100vh;
     flex-grow: 1;

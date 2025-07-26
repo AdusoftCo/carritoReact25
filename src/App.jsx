@@ -8,7 +8,7 @@ import Ofertas from './pages/Ofertas';
 import Infaltables from './pages/Seguroksi';
 import Contacto from './pages/Contacto';
 import Carrito from './pages/Carrito';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import Admin from './pages/Admin';
 import { CartProvider } from './components/CartContext';
 import { AuthProvider } from "./components/AuthContext";
@@ -17,15 +17,26 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
+const ConditionalNavbar = () => {
+  const location = useLocation();
+  const isDashboardRoute = location.pathname === '/dashboard';
+  // If i have other admin-only routes where i do not want the main nav,
+  // i can extend this:
+  // const isAdminRoute = location.pathname.startsWith('/admin') || location.pathname === '/dashboard';
+
+  return (
+    !isDashboardRoute && <Navegacion />
+  );
+};
+
 
 function App() {
-  
   return (
     <AuthProvider>
       <CartProvider>
         <Router>
           <div className="wrapper">
-            <Navegacion />
+            <ConditionalNavbar />
             <div className="main-content">
               <Routes>
                 <Route path="/" element={<Home/>} />
