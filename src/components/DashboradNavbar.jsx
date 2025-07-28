@@ -11,7 +11,6 @@ const DashboardNavbar = ({ userName, onLogout }) => {
             paddingBottom: '1rem', 
             paddingLeft: '1rem',   
             paddingRight: '8rem',  
-                                   
             width: '100%',
             boxSizing: 'border-box',
             backgroundColor: 'white',

@@ -1,11 +1,10 @@
 // Home.jsx
+
 import React, { useEffect, useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Row, Col } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 import { CartContext } from '../components/CartContext';
-
-//import { useCart } from '../components/CartContext';
 
 const Home = () => {
   const { agregarAlCarrito } = useContext(CartContext);

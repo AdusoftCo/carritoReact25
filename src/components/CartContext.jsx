@@ -10,7 +10,7 @@ export const CartProvider = ({ children }) => {
 
   // Agregar producto al carrito
   const agregarAlCarrito = (product) => {
-    console.log('Adding to cart:', product);
+
     setCarrito((prevCarrito) => {
       const existe = prevCarrito.find(item => item.id === product.id);
       if (existe) {
