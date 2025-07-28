@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import carritoIcon from '../assets/icons8-carrito-de-compras-48.png';
@@ -7,30 +7,35 @@ import { CartContext } from '../components/CartContext';
 
 const Navegacion = () => {
   const { carrito } = useContext(CartContext);
+  const [expanded, setExpanded] = useState(false);
 
   const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
+  const handleNavLinkClick = () => {
+    setExpanded(false);
+  };
+
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" expanded={expanded} onToggle={() => setExpanded(!expanded)}>
       <Container>
-        <Navbar.Brand as={Link} to="/" style={{ display: 'flex', alignItems: 'center' }}>
-          <img 
-            src={newIcon} 
-            alt="Icono del Comercio" 
-            style={{ width: '48px', height: '48px', marginLeft: '8px' }} 
+        <Navbar.Brand as={Link} to="/" style={{ display: 'flex', alignItems: 'center' }} onClick={handleNavLinkClick}>
+          <img
+            src={newIcon}
+            alt="Icono del Comercio"
+            style={{ width: '48px', height: '48px', marginLeft: '8px' }}
           />
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/ofertas">Ofertas</Nav.Link>
-            <Nav.Link as={Link} to="/seguroksi">InFaltables</Nav.Link>
-            <Nav.Link as={Link} to="/contacto">Contacto</Nav.Link>
-            <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
+          <Nav className="ms-auto me-auto d-flex flex-column flex-lg-row text-center">
+            <Nav.Link as={Link} to="/" onClick={handleNavLinkClick}>Home</Nav.Link>
+            <Nav.Link as={Link} to="/ofertas" onClick={handleNavLinkClick}>Ofertas</Nav.Link>
+            <Nav.Link as={Link} to="/seguroksi" onClick={handleNavLinkClick}>InFaltables</Nav.Link>
+            <Nav.Link as={Link} to="/contacto" onClick={handleNavLinkClick}>Contacto</Nav.Link>
+            <Nav.Link as={Link} to="/admin" onClick={handleNavLinkClick}>Admin</Nav.Link>
 
-            <Nav.Link as={Link} to="/carrito" style={{ display: 'flex', alignItems: 'center' }}>
+            <Nav.Link as={Link} to="/carrito" onClick={handleNavLinkClick} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <img src={carritoIcon} alt="Carrito" style={{ width: '32px', height: '32px', marginRight: '8px' }} />
               {totalItems > 0 && (
                 <Badge pill bg="light" text="dark">
